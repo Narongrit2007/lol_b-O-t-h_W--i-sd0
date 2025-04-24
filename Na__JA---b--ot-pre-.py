@@ -7,12 +7,12 @@ import base64
 from discord.ext import commands
 from discord.ui import Button, View, Modal, TextInput
 from discord import app_commands
-from dotenv import load_dotenv
 import asyncio
 import time
 import itertools
 import sys
 import os
+from dotenv import load_dotenv
 
 # เริ่มต้นตัวแปรต่างๆ
 spinner_running = True
@@ -21,7 +21,8 @@ COOLDOWN_SECONDS = 300  # 5 นาที
 
 load_dotenv()
 
-Dis_TOKEN = os.getenv("Dis_TOKEN")
+token = os.getenv("DISCORD_TOKEN")
+
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 GITHUB_FILE_URL = os.getenv("GITHUB_FILE_URL")
 
@@ -384,7 +385,7 @@ async def on_ready():
 # เริ่มการหมุนตัวบนบอท
 async def main():
     spinner_thread = asyncio.create_task(spinning_cursor())
-    await bot.start(Dis_TOKEN)
+    await bot.start(token)
     print("End")
 
 asyncio.run(main())
